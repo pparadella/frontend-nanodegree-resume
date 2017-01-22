@@ -3,26 +3,26 @@ var education = {
   "schools" : [
     {
     "name" : "Universidade Veiga de Almeida",
-    "location" : "Rio de Janeiro",
+    "location" : "Tijuca, Rio de Janeiro",
     "degree" : "Bachelor(in progress)",
     "majors" : ["Computer Science"],
-    "dates" : "2017",
+    "dates" : 2017,
     "url" : "https://uva.br/"
     },
     {
     "name" : "Col. Est. Pedro Álvares Cabral ",
-    "location" : "Rio de Janeiro",
+    "location" : "Copacabana, Rio de Janeiro",
     "degree" : "High School",
     "majors" : [""],
-    "dates" : "2007",
+    "dates" : 2007,
     "url" : ""
     },
     {
     "name" : "Liceu de artes e oficios",
-    "location" : "Rio de Janeiro",
+    "location" : "Centro, Rio de Janeiro",
     "degree" : "High School",
     "majors" : ["Computer Science"],
-    "dates" : "2006",
+    "dates" : 2006,
     "url" : "http://www.liceudearteseoficios.com.br/"
     }
   ],
@@ -30,25 +30,25 @@ var education = {
     {
       "title" : "Web Front-End Developer",
       "school" : "Udacity",
-      "dates" : "2017",
+      "dates" : 2017,
       "url" : "https://br.udacity.com/"
     },
     {
       "title" : "Git & GitHub",
       "school" : "Udacity",
-      "dates" : "2017",
+      "dates" : 2017,
       "url" : "https://br.udacity.com/"
     },
     {
       "title" : "Linha de Comando Linux Básico",
       "school" : "Udacity",
-      "dates" : "2017",
+      "dates" : 2017,
       "url" : "https://br.udacity.com/"
     },
     {
       "title" : "Oracle 11g PL-SQL",
       "school" : "Interplan Soluções e Conectividade",
-      "dates" : "2014",
+      "dates" : 2014,
       "url" : "http://www.interplan.com.br/"
     }
   ]
@@ -74,14 +74,14 @@ var work = {
     {
       "employer" : "Golden Tulip Hotel",
       "title" : "IT Trainee",
-      "location" : "Rio de Janeiro, RJ",
+      "location" : "Copacabana, Rio de Janeiro, RJ",
       "dates" : "2010",
       "description" : "Support for employees and employers, machine repair, private network repair and servers."
     },
     {
       "employer" : "Ocean Air Linhas Aéreas",
       "title" : "Airline Agent",
-      "location" : "Rio de Janeiro, RJ",
+      "location" : "Praça XV, Rio de Janeiro, RJ",
       "dates" : "2009-2010",
       "description" : "Check-in of passengers, sell tickets, boarding/unboarding airplanes and their supervision."
     }
@@ -153,10 +153,10 @@ bio.display = function(){
   $("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
   $("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
 
-  if (bio.skills.length > 0){
+  if (bio.skills.length > 0) {
     //skills no header em skills
     $("#header").append(HTMLskillsStart);
-    for (each in bio.skills){
+    for (var each in bio.skills){
       $("#skills").append(HTMLskills.replace("%data%",bio.skills[each]));
     }
 
@@ -178,7 +178,7 @@ bio.display = function(){
 
 //funçao para mostrar tudo de work
 work.display = function(){
-  for(job in work.jobs ){
+  for (var job in work.jobs ){
     $("#workExperience").append(HTMLworkStart);
 
     var formattedWorkEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
@@ -194,13 +194,13 @@ work.display = function(){
 //funcao para mostrar tudo de projects
 projects.display = function(){
   $("#projects").append(HTMLprojectStart);
-  for (project in projects.projects){
+  for (var project in projects.projects){
     var formattedProjectTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
     var formattedProjectDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
     var formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
     var formattedProjectImages = [];
     //iterando as imagens e colocando numa array
-    for (image in projects.projects[project].images){
+    for (var image in projects.projects[project].images){
 
         formattedProjectImages[image] = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
 
@@ -209,7 +209,7 @@ projects.display = function(){
     $(".project-entry:last").append(formattedProjectTitle+formattedProjectDates+formattedProjectDescription+"<br>");
 
     //colocando as imagens no html
-    for (image in projects.projects[project].images){
+    for (var image in projects.projects[project].images){
 
         $(".project-entry:last").append(formattedProjectImages[image]);
 
@@ -221,16 +221,16 @@ projects.display = function(){
 education.display = function(){
   //colocando as escolas
   $("#education").append(HTMLschoolStart);
-  for(each in education.schools){
+  for (var each in education.schools){
     var formattedSchoolName = HTMLschoolName.replace("%data%",education.schools[each].name);
     var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",education.schools[each].degree);
     var formattedSchoolMajors = HTMLschoolMajor.replace("%data%",education.schools[each].majors);
     var formattedSchoolDates = HTMLschoolDates.replace("%data%",education.schools[each].dates);
     var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",education.schools[each].location);
     console.log(education.schools[each].majors);
-    if (education.schools[each].majors != ""){
-      $(".education-entry:last").append(formattedSchoolName+formattedSchoolDegree+formattedSchoolDates+formattedSchoolMajors+formattedSchoolLocation+"<br><br>");
-    }else {
+    if (education.schools[each].majors != "") {
+      $(".education-entry:last").append(formattedSchoolName+formattedSchoolDegree+formattedSchoolDates+formattedSchoolLocation+formattedSchoolMajors+"<br><br>");
+    } else {
       $(".education-entry:last").append(formattedSchoolName+formattedSchoolDegree+formattedSchoolDates+formattedSchoolLocation+"<br><br>");
     }
 
@@ -239,7 +239,7 @@ education.display = function(){
   //colocando os cursos
   $(".education-entry:last").append(HTMLonlineClasses);
 
-  for(each in education.onlineCourses){
+  for (var each in education.onlineCourses){
     var formattedCoursesTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[each].title);
     var formattedCoursesSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[each].school);
     var formattedCoursesDates = HTMLonlineDates.replace("%data%",education.onlineCourses[each].dates);

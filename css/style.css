@@ -121,18 +121,21 @@ a {
 }
 
 .gray {
-  background-color: #f3f3f3;
+  /*background-color: #f3f3f3;*/
+  background-color: #f4fcff;
   padding-bottom: 10px;
   clear: both;
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  /*background-color: #4a4a4a;*/
+  background-color: #48545a;
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  /*background-color: #484848;*/
+  background-color: #48545a;
 }
 
 .flex-box {
