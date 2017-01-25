@@ -58,7 +58,7 @@ var education = {
 var work = {
   "jobs" : [
     {
-      "employer" : "Autonomouss",
+      "employer" : "Freelancer",
       "title" : "Front-end Developer",
       "location" : "Rio de Janeiro, RJ",
       "dates" : "2007-2017",
